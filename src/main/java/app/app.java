@@ -108,8 +108,13 @@ public class app {
         IO.println("EJERCICIO 10--------------------------------------------------------------------------------");
         //Calcular la temperatura promedio de todos los registros (transformarlo en Stream<Double> y
         //llamar a average()).
-        Double temperutaMedia = registros.stream()
+        double temperutaMedia = registros.stream()
                 .collect(Collectors.averagingDouble(Registro::getTemperatura));
+
+        temperutaMedia = registros.stream()
+                        .mapToDouble(Registro::getTemperatura)
+                                .average().orElse(0.0);
+
         IO.println(temperutaMedia);
 
 
